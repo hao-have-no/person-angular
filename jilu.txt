@@ -1,0 +1,17 @@
+1.关于ng组件中的ng指令无法解析的时候,检查app.module文件中,在declarations(依赖注入相关组件)中导入
+2.在使用Service中,大部分的情况是异步的,所以推荐使用Observable(可观察的（异步的传输数据流）).返回的数据为Observable<Hero[]>
+通过引入import { Observable, of } from 'rxjs';
+改装service中的getHeroes(): Observable<Hero[]> {
+  return of(HEROES);
+}
+在依赖注入中,方法体改装为
+getHeroes(): void {
+  this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+}
+subscribe 函数将获取的返回给回调函数
+3.@Input() hero: Hero; @Input装饰器,用于父组件向子组件内传值
+4.ｗｅｂAPi内置,使用HttpClientInMemoryWebApiModule 和 InMemoryDataService．（安装和自动创建）
+５.pipe在异步请求的过程中，进行逻辑操作
+６．Subject（一种Observable可观察的对象），通过直接绑定的形式，进行对应的变化
+７．
