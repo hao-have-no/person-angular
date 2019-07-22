@@ -12,6 +12,8 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { HeroMeasurementComponent } from './hero-measurement/hero-measurement.component';
+import { HeroMeasurementChildrenComponent } from './hero-measurement-children/hero-measurement-children.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     HeroDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    HeroMeasurementComponent,
+    HeroMeasurementChildrenComponent
   ],
   imports: [
     BrowserModule,//获取浏览器特有服务

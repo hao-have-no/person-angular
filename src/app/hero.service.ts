@@ -36,11 +36,10 @@ export class HeroService {
     // this.messageService.add('HeroService: fetched heros');
     // return of(HEROES);
 
-        tap(_ => this.log('fetched heroes')),
+        tap(_ => this.log('','get Data')),
         catchError(this.handleError<Hero[]>('getHeros',[]))
     );
     // tap查看返回的值，在进行操作中不会更新返回值
-
   }
 
   /** GET hero by id. Return `undefined` when id not found */
@@ -51,7 +50,7 @@ export class HeroService {
             map(heroes => heroes[0]), // returns a {0|1} element array
             tap(h => {
               const outcome = h ? `fetched` : `did not find`;
-              this.log(`${outcome} hero id=${id}`);
+              this.log(`${outcome} hero id=,`,`${id}`);
             }),
             catchError(this.handleError<Hero>(`getHero id=${id}`))
         );
@@ -67,22 +66,22 @@ export class HeroService {
     const url= `${this.heroUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
         //ｐｉｐｅ管道函数，对数据进行处理
-        tap(_ => this.log(`fetched hero id=${id}`)),
+        tap(_ => this.log("fetched hero id=",""+id)),
         catchError(this.handleError<Hero>(`getHero id=${id}`))
     )
 
   }
 
   //纪录日志
-  private log(message: string) {
-    this.messageService.add(`HeroService: ${message}`);
+  public log(tip: string,message: string) {
+    this.messageService.add(`${tip !=''?tip:'Heros'}: ${message}`);
   }
 
   //更新列表数据
   updateHero(hero: Hero): Observable<any> {
 
     return this.http.put(this.heroUrl, hero, this.httpOptions).pipe(
-        tap(_ => this.log(`updated hero id=${hero.id}`)),
+        tap(_ => this.log(`updated hero id=`,`${hero.id}`)),
         catchError(this.handleError<any>('updateHero'))
     )
   }
@@ -90,7 +89,7 @@ export class HeroService {
   //新增用户
   addHero(hero: Hero): Observable<Hero> {
     return this.http.post(this.heroUrl, hero, this.httpOptions).pipe(
-        tap((newHero: Hero) => this.log(`added hero w/ id=${newHero.id}`)),
+        tap((newHero: Hero) => this.log(`added hero w/ id=`,`${newHero.id}`)),
         catchError(this.handleError<Hero>('addHero'))
     );
   }
@@ -101,7 +100,7 @@ export class HeroService {
     const url = `${this.heroUrl}/${id}`;
 
     return this.http.delete<Hero>(url, this.httpOptions).pipe(
-        tap(_ => this.log(`deleted hero id=${id}`)),
+        tap(_ => this.log(`deleted hero id=`,`${id}`)),
         catchError(this.handleError<Hero>('deleteHero'))
     );
   }
@@ -111,7 +110,7 @@ export class HeroService {
       return of([])
     }
     return this.http.get<Hero[]>(`${this.heroUrl}/?name=${term}`).pipe(
-        tap(_ => this.log(`found heroes matching "${term}"`)),
+        tap(_ => this.log(`found heroes matching `,`"${term}"`)),
         catchError(this.handleError<Hero[]>('searchHeroes', []))
     )
   }
