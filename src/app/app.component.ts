@@ -1,7 +1,6 @@
 import { Component, OnInit, } from '@angular/core';
-import {Router, NavigationStart, NavigationEnd, RoutesRecognized} from "@angular/router";
+import {Router,ActivatedRoute, NavigationStart, NavigationEnd, RoutesRecognized} from "@angular/router";
 import { HeroService } from "./hero.service";
-import {timer} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -26,6 +25,11 @@ export class AppComponent implements OnInit{
       id:'3',
       name:'测试页',
       url:'/test'
+    },
+    {
+    id:'4',
+    name:'广告',
+    url:'/ad'
     }
   ];
 
@@ -38,7 +42,10 @@ export class AppComponent implements OnInit{
   //路由计时器
   private updateRouterTime(tip: string,routeMap: string){
     var self=this;
-    if (tip === '1'){
+
+    if (routeMap === '/')this.router.navigate(['/ad']);
+
+    if (tip === '1'&&routeMap != '/'){
       //当前页面停留时长
       clearInterval(this.timeStamp);
       this.timeStamp=setInterval(function () {
@@ -67,6 +74,6 @@ export class AppComponent implements OnInit{
         this.onRouter = event.url;
         this.updateRouterTime('1',event.url);
       }
-    })
+    });
   }
 }

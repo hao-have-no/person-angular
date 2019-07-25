@@ -14,6 +14,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { HeroMeasurementComponent } from './hero-measurement/hero-measurement.component';
 import { HeroMeasurementChildrenComponent } from './hero-measurement-children/hero-measurement-children.component';
+import { HighlightDirective } from './highlight.directive';
+
+import {AdBannerComponent} from "./ad-component/ad-banner.component";
+import {HeroProfileComponent} from "./ad-component/hero-profille.component";
+import {HeroJobAdComponent} from "./ad-component/hero-job-ad.component";
+import {AdListComponent} from "./ad-component/ad.list.component";
+import {AdDirective} from "./ad-component/ad.directive";
 
 @NgModule({
   declarations: [
@@ -24,8 +31,15 @@ import { HeroMeasurementChildrenComponent } from './hero-measurement-children/he
     DashboardComponent,
     HeroSearchComponent,
     HeroMeasurementComponent,
-    HeroMeasurementChildrenComponent
+    HeroMeasurementChildrenComponent,
+    HighlightDirective,
+      AdBannerComponent,
+      HeroJobAdComponent,
+      HeroProfileComponent,
+      AdListComponent,
+      AdDirective
   ],
+  entryComponents:[ HeroProfileComponent, HeroJobAdComponent],
   imports: [
     BrowserModule,//获取浏览器特有服务
     FormsModule,

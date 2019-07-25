@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, OnDestroy} from '@angular/core';
+import {Subscription} from "rxjs";
+import {MeasurementService} from "../measurement.service";
 
 @Component({
   selector: 'app-hero-measurement-children',
@@ -7,18 +9,43 @@ import {Component, EventEmitter, Input, OnInit, Output, OnDestroy} from '@angula
 })
 export class HeroMeasurementChildrenComponent implements OnInit {
   @Input() name:string;
+  @Input() astronaut: string;
   @Output() voted = new EventEmitter<boolean>();
   didVote = false;
 
   intervalId = 0;
   message = '';
   seconds = 11;
-  constructor() { }
+
+  mission = '<no mission announced>';
+  confirmed = false;
+  announced = false;
+  subscription: Subscription;
+
+  constructor(private missionService:MeasurementService) {
+    this.subscription= missionService.missionAnnounced$.subscribe(
+        mission=>{
+          this.mission = mission;
+          this.announced = true;
+          this.confirmed = false;
+        }
+    );
+  }
+
+  confirm(){
+    this.confirmed = true;
+    this.missionService.confirmMission(this.astronaut);
+  }
+
+  ngOnDestroy(){
+    this.clearTimer();
+    this.subscription.unsubscribe();
+  }
 
   // <!--EventEmitter－－通过事件机制来贯穿父子组件-->
   vote(agreed: boolean){
     this.voted.emit(agreed);
-    this.didVote=false;
+    this.didVote=true;
   }
 
   clearTimer(){
@@ -29,9 +56,9 @@ export class HeroMeasurementChildrenComponent implements OnInit {
     this.start();
   }
 
-  ngOnDestroy(){
-    this.clearTimer();
-  }
+  // ngOnDestroy(){
+  //
+  // }
 
   start(){
     this.countDown();
@@ -48,7 +75,7 @@ export class HeroMeasurementChildrenComponent implements OnInit {
       this.seconds -=1;
       if (this.seconds === 0){
         this.message = 'Blast off!';
-      } else{
+      }else{
         if (this.seconds< 0){
           this.seconds = 10;
         }
