@@ -21,6 +21,8 @@ import {HeroProfileComponent} from "./ad-component/hero-profille.component";
 import {HeroJobAdComponent} from "./ad-component/hero-job-ad.component";
 import {AdListComponent} from "./ad-component/ad.list.component";
 import {AdDirective} from "./ad-component/ad.directive";
+import { AppUnlessDirective } from './ad-component/app-unless.directive';
+import { ExponentialPipe } from './ad-component/exponential.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import {AdDirective} from "./ad-component/ad.directive";
       HeroJobAdComponent,
       HeroProfileComponent,
       AdListComponent,
-      AdDirective
+      AdDirective,
+      AppUnlessDirective,
+      ExponentialPipe
   ],
   entryComponents:[ HeroProfileComponent, HeroJobAdComponent],
   imports: [
