@@ -1,11 +1,13 @@
 import { Component, OnInit, } from '@angular/core';
-import {Router,ActivatedRoute, NavigationStart, NavigationEnd, RoutesRecognized} from "@angular/router";
+import {Router, ActivatedRoute, NavigationStart, NavigationEnd, RoutesRecognized, RouterOutlet} from "@angular/router";
 import { HeroService } from "./hero.service";
+import {slideInAnimation} from "./animations";
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit{
   private onRouter: string="";
@@ -30,6 +32,15 @@ export class AppComponent implements OnInit{
     id:'4',
     name:'广告',
     url:'/ad'
+    },
+    {
+      id:'5',
+      name:'响应式表单',
+      url:'/reactive'
+    },{
+      id:'6',
+      name:'响应式表单模版',
+      url:'/hero',
     }
   ];
 
@@ -43,7 +54,7 @@ export class AppComponent implements OnInit{
   private updateRouterTime(tip: string,routeMap: string){
     var self=this;
 
-    if (routeMap === '/')this.router.navigate(['/ad']);
+    if (routeMap === '/')this.router.navigate(['/hero']);
 
     if (tip === '1'&&routeMap != '/'){
       //当前页面停留时长
@@ -57,7 +68,7 @@ export class AppComponent implements OnInit{
 
     if (tip === '0'){
       const routerName=self.NavRouter.filter(item => item.url === self.onRouter);
-      this.heroService.log(`router from ${routerName.length != 0?routerName[0].name:''}`,`timeStamp:${self.time}`);
+      this.heroService.log(`router from ${routerName.length != 0?routerName[0].name:'初始化页面'}`,`timeStamp:${self.time}`);
       clearInterval(this.timeStamp);
       this.time = 0;
     }

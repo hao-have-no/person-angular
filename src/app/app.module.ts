@@ -24,6 +24,22 @@ import {AdDirective} from "./ad-component/ad.directive";
 import { AppUnlessDirective } from './ad-component/app-unless.directive';
 import { ExponentialPipe } from './ad-component/exponential.pipe';
 
+/**
+ * 响应式表单
+ */
+import { ReactiveFormsModule } from "@angular/forms";
+import {HeroReactiveControllerComponent} from "./name-editor/hero-reactive-controller.component";
+import { NameEditorComponent } from './name-editor/name-editor.component';
+import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
+import { HeroFormComponent } from './angular-form/hero-form/hero-form.component';
+import { HeroFormControllerComponent } from "./angular-form/hero-form-controller.component";
+import { HeroFormReactiveComponent } from './angular-form/hero-form-reactive/hero-form-reactive.component';
+
+/**
+ * 动画元素
+ */
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,23 +51,31 @@ import { ExponentialPipe } from './ad-component/exponential.pipe';
     HeroMeasurementComponent,
     HeroMeasurementChildrenComponent,
     HighlightDirective,
-      AdBannerComponent,
-      HeroJobAdComponent,
-      HeroProfileComponent,
-      AdListComponent,
-      AdDirective,
-      AppUnlessDirective,
-      ExponentialPipe
+    AdBannerComponent,
+    HeroJobAdComponent,
+    HeroProfileComponent,
+    AdListComponent,
+    AdDirective,
+    AppUnlessDirective,
+    ExponentialPipe,
+    NameEditorComponent,
+    HeroReactiveControllerComponent,
+    ProfileEditorComponent,
+    HeroFormComponent,
+    HeroFormControllerComponent,
+    HeroFormReactiveComponent
   ],
   entryComponents:[ HeroProfileComponent, HeroJobAdComponent],
   imports: [
     BrowserModule,//获取浏览器特有服务
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule,
     HttpClientInMemoryWebApiModule.forRoot(
-        InMemoryDataService, { dataEncapsulation: false }
+    InMemoryDataService, { dataEncapsulation: false }
     )
   ],
   providers: [],//服务提供商

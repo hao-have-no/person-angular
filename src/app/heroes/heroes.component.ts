@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero'
 import { HeroService } from '../hero.service'
+import {of, pipe} from "rxjs";
+import {filter, map} from "rxjs/operators";
 
 @Component({
   selector: 'app-heroes',
@@ -33,6 +35,27 @@ export class HeroesComponent implements OnInit {
 
   ngOnInit() {
     this.getHeros();
+    this.courseFunc();
+  }
+
+  //RxJS 库，常用的操作符
+  courseFunc(){
+    // const nums=of(1,2,3,4,5,6);
+    //
+    // const squareOddVals=pipe(
+    //     filter((n:number) => n%2 !== 0),
+    //     map(n=>n*n)
+    // );
+    //
+    // const squareOdd = squareOddVals(nums);
+
+    const squareOdd =of(1,2,3,4,5,6).pipe(
+        filter((n:number) => n%2 !== 0),
+            map(n=>n*n)
+    );
+
+        squareOdd.subscribe(x=>console.log("!!!!!",x));
+
   }
 
 }
