@@ -1,7 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
 import {Router, ActivatedRoute, NavigationStart, NavigationEnd, RoutesRecognized, RouterOutlet} from "@angular/router";
 import { HeroService } from "./hero.service";
+import { PageService } from "./page.service";
 import {slideInAnimation} from "./animations";
+import {pageInfo} from "./pageInfo";
 
 
 @Component({
@@ -48,6 +50,7 @@ export class AppComponent implements OnInit{
   constructor(
       private router: Router,
       private heroService: HeroService,
+      private pageService: PageService
               ){　}
 
   //路由计时器
@@ -69,6 +72,15 @@ export class AppComponent implements OnInit{
     if (tip === '0'){
       const routerName=self.NavRouter.filter(item => item.url === self.onRouter);
       this.heroService.log(`router from ${routerName.length != 0?routerName[0].name:'初始化页面'}`,`timeStamp:${self.time}`);
+      if (routerName.length !=0){
+        const userId: string="0000"+Math.ceil(Math.random()*20)+"08";
+        const page: string=routerName[0].url;
+        const pageName: string=routerName[0].name;
+        const stampTime: string=(self.time/60).toFixed(2).toString();
+        const info=new pageInfo(userId, page, pageName, stampTime);
+        console.log(info);
+        this.pageService.addPageInfo(info);
+      }
       clearInterval(this.timeStamp);
       this.time = 0;
     }
@@ -80,6 +92,9 @@ export class AppComponent implements OnInit{
       if (event instanceof RoutesRecognized){
         this.updateRouterTime('0',event.url);
       }
+
+
+
 
       if (event instanceof NavigationEnd){
         this.onRouter = event.url;
