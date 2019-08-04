@@ -79,7 +79,7 @@ export class AppComponent implements OnInit{
         const stampTime: string=(self.time/60).toFixed(2).toString();
         const info=new pageInfo(userId, page, pageName, stampTime);
         console.log(info);
-        this.pageService.addPageInfo(info);
+        this.pageService.addPageInfo(info)
       }
       clearInterval(this.timeStamp);
       this.time = 0;

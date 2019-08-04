@@ -3,6 +3,7 @@ import {　HttpClient, HttpHeaders} from "@angular/common/http";
 import {pageInfo} from "./pageInfo";
 import {Observable} from "rxjs";
 import {catchError} from "rxjs/operators";
+// import "rxjs/add/operator/map"
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +18,25 @@ export class PageService {
     })
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient){
 
   }
 
   addPageInfo(page:pageInfo){
-    const url=this.pageInfoUrl+'?userId='+page.userId+'&page='+page.page
-    +'&pageName='+page.pageName+'&stayTime='+page.stayTime;
-    this.http.get(url).subscribe((val)=>{
-      console.log("11111");
-    })
+    var that=this;
+    const url=this.pageInfoUrl;
+      return new Promise(function (res, rej) {
+          return that.http.get(url).subscribe(
+              val=>{
+                console.log(val);
+              }
+          );
+      });
+    // this.http.get(url).subscribe((val)=>{
+    //   return
+    // })
+    //   var data="123456";
+    //   return data;
 
     // const that = this;
     // const url=this.pageInfoUrl+'?userId='+page.userId+'&page='+page.page

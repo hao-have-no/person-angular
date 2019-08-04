@@ -39,6 +39,7 @@ import { HeroFormReactiveComponent } from './angular-form/hero-form-reactive/her
  * 动画元素
  */
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {PageService} from "./page.service";
 
 @NgModule({
   declarations: [
@@ -67,18 +68,19 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
   ],
   entryComponents:[ HeroProfileComponent, HeroJobAdComponent],
   imports: [
-    BrowserModule,//获取浏览器特有服务
+    BrowserModule,
+      // 获取浏览器特有服务
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-    InMemoryDataService, { dataEncapsulation: false }
-    )
+    // HttpClientInMemoryWebApiModule,
+    // HttpClientInMemoryWebApiModule.forRoot(
+    // InMemoryDataService, { dataEncapsulation: false }
+    // )
   ],
-  providers: [],//服务提供商
+  providers: [PageService],//服务提供商
   bootstrap: [AppComponent]//根组件，提供视图服务
 })
 export class AppModule { }
