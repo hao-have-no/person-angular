@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./in-memory-data.service";
+import { NgxEchartsModule } from "ngx-echarts";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +41,7 @@ import { HeroFormReactiveComponent } from './angular-form/hero-form-reactive/her
  */
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {PageService} from "./page.service";
+import { PageViewComponent } from './page-view/page-view.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import {PageService} from "./page.service";
     ProfileEditorComponent,
     HeroFormComponent,
     HeroFormControllerComponent,
-    HeroFormReactiveComponent
+    HeroFormReactiveComponent,
+    PageViewComponent
   ],
   entryComponents:[ HeroProfileComponent, HeroJobAdComponent],
   imports: [
@@ -79,6 +82,7 @@ import {PageService} from "./page.service";
     // HttpClientInMemoryWebApiModule.forRoot(
     // InMemoryDataService, { dataEncapsulation: false }
     // )
+    NgxEchartsModule
   ],
   providers: [PageService],//服务提供商
   bootstrap: [AppComponent]//根组件，提供视图服务

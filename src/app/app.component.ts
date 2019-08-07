@@ -43,6 +43,11 @@ export class AppComponent implements OnInit{
       id:'6',
       name:'响应式表单模版',
       url:'/hero',
+    },
+    {
+      id:'7',
+      name:'echarts实现',
+      url:'/echart',
     }
   ];
 
@@ -51,7 +56,24 @@ export class AppComponent implements OnInit{
       private router: Router,
       private heroService: HeroService,
       private pageService: PageService
-              ){　}
+              ){
+          var index=0;
+          const that=this;
+          setInterval(function(){
+            index++;
+            const userId: string="0000"+Math.ceil(Math.random()*20)+"08";
+            const num=(Math.ceil(Math.random()*6)%6);
+            const page: string=that.NavRouter[num].url;
+            const pageName: string=that.NavRouter[num].name;
+            const stampTime: string=(Math.ceil(Math.random()*100)/10).toFixed(2).toString();
+            const info=new pageInfo(userId, page, pageName, stampTime);
+            that.pageService.addPageInfo(info).subscribe(
+                val=>{
+                  console.log("get",index);
+                }
+            )
+          },1000)
+  　}
 
   //路由计时器
   private updateRouterTime(tip: string,routeMap: string){
@@ -79,7 +101,11 @@ export class AppComponent implements OnInit{
         const stampTime: string=(self.time/60).toFixed(2).toString();
         const info=new pageInfo(userId, page, pageName, stampTime);
         console.log(info);
-        this.pageService.addPageInfo(info)
+        this.pageService.addPageInfo(info).subscribe(
+            val=>{
+              console.log("val",val);
+            }
+        )
       }
       clearInterval(this.timeStamp);
       this.time = 0;
