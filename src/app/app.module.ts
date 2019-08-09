@@ -42,6 +42,7 @@ import { HeroFormReactiveComponent } from './angular-form/hero-form-reactive/her
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {PageService} from "./page.service";
 import { PageViewComponent } from './page-view/page-view.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { PageViewComponent } from './page-view/page-view.component';
     HeroFormComponent,
     HeroFormControllerComponent,
     HeroFormReactiveComponent,
-    PageViewComponent
+    PageViewComponent,
+    NavigationComponent
   ],
   entryComponents:[ HeroProfileComponent, HeroJobAdComponent],
   imports: [

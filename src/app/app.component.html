@@ -1,8 +1,14 @@
 <div class="infi-content">
-    <div class="left-nav">
+
+    <aside class="left-nav">
         <h4>路由</h4>
         <a *ngFor="let item of NavRouter" routerLink="{{item.url}}" [ngClass]="{'roActive': onRouter == item.url }"> {{item.name}} </a>
-    </div>
+    </aside>
+    <section>
+        <header>
+            123
+        </header>
+    </section>
     <div class="right-content">
         <router-outlet></router-outlet>
     <app-messages></app-messages>
