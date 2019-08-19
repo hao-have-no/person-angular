@@ -28,7 +28,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/style/basic.scss"
             ],
             "scripts":[
               "node_modules/echarts/dist/echarts.min.js"
