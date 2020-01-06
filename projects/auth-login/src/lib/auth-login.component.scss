@@ -1,0 +1,29 @@
+.login-form {
+  width: 350px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  z-index: 30;
+  transform: translate(-50%, -90%);
+  padding: 20px 30px;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.login-page {
+  width: 100%;
+  height: 100vh;
+  > div {
+    width: 100%;
+    background: url('assets/images/must/login-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover;
+  }
+
+}
