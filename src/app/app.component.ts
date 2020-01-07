@@ -1,11 +1,8 @@
 import { Component, OnInit, } from '@angular/core';
-import {Router, ActivatedRoute, NavigationStart, NavigationEnd, RoutesRecognized, RouterOutlet} from "@angular/router";
-import { HeroService } from "./hero.service";
-import { PageService } from "./page.service";
-import {slideInAnimation} from "./animations";
-import {pageInfo} from "./pageInfo";
-import { NavigationComponent } from "./navigation/navigation.component";
-
+import {Router, NavigationEnd, RoutesRecognized} from "@angular/router";
+import { HeroService } from "./services/hero.service";
+import { PageService } from "./services/page.service";
+import {pageInfo} from "./interface/pageInfo";
 
 
 @Component({
@@ -17,46 +14,16 @@ export class AppComponent implements OnInit{
   private onRouter: string="";
   private timeStamp: number;
   private time: number=0;
-  public menuHideTip=false;
-
   private NavRouter:any=[
     {
-    id:'1',
-    name:'列表页',
-    url:'/heros',
-    },{
-    id:'2',
-    name:'视图页',
-    url:'/dashboard'
-    },
-    {
-      id:'3',
-      name:'测试页',
-      url:'/test'
-    },
-    {
-    id:'4',
-    name:'广告',
-    url:'/ad'
-    },
-    {
-      id:'5',
-      name:'响应式表单',
-      url:'/reactive'
-    },{
-      id:'6',
+      id:'1',
       name:'响应式表单模版',
       url:'/hero',
     },
     {
-      id:'7',
+      id:'2',
       name:'echarts实现',
       url:'/echart',
-    },
-    {
-      id:'8',
-      name:"个人中心",
-      url:'/person-manager'
     }
   ];
 
@@ -112,12 +79,13 @@ export class AppComponent implements OnInit{
         this.updateRouterTime('0',event.url);
       }
 
+
+
+
       if (event instanceof NavigationEnd){
         this.onRouter = event.url;
         this.updateRouterTime('1',event.url);
       }
     });
-
-    console.log(this.menuHideTip);
   }
 }

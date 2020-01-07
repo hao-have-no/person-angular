@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PageService } from "../page.service";
-import {pageInfo} from "../pageInfo";
-import * as echarts from 'echarts';
+import { PageService } from "../../services/page.service";
 
 @Component({
   selector: 'app-page-view',
