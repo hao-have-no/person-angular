@@ -4,6 +4,8 @@ import { HeroService } from "./hero.service";
 import { PageService } from "./page.service";
 import {slideInAnimation} from "./animations";
 import {pageInfo} from "./pageInfo";
+import { NavigationComponent } from "./navigation/navigation.component";
+
 
 
 @Component({
@@ -15,6 +17,8 @@ export class AppComponent implements OnInit{
   private onRouter: string="";
   private timeStamp: number;
   private time: number=0;
+  public menuHideTip=false;
+
   private NavRouter:any=[
     {
     id:'1',
@@ -48,6 +52,11 @@ export class AppComponent implements OnInit{
       id:'7',
       name:'echarts实现',
       url:'/echart',
+    },
+    {
+      id:'8',
+      name:"个人中心",
+      url:'/person-manager'
     }
   ];
 
@@ -57,22 +66,6 @@ export class AppComponent implements OnInit{
       private heroService: HeroService,
       private pageService: PageService
               ){
-          var index=0;
-          const that=this;
-          // setInterval(function(){
-          //   index++;
-          //   const userId: string="0000"+Math.ceil(Math.random()*20)+"08";
-          //   const num=(Math.ceil(Math.random()*6)%6);
-          //   const page: string=that.NavRouter[num].url;
-          //   const pageName: string=that.NavRouter[num].name;
-          //   const stampTime: string=(Math.ceil(Math.random()*100)/10).toFixed(2).toString();
-          //   const info=new pageInfo(userId, page, pageName, stampTime);
-          //   that.pageService.addPageInfo(info).subscribe(
-          //       val=>{
-          //         console.log("get",index);
-          //       }
-          //   )
-          // },1000)
   　}
 
   //路由计时器
@@ -119,13 +112,12 @@ export class AppComponent implements OnInit{
         this.updateRouterTime('0',event.url);
       }
 
-
-
-
       if (event instanceof NavigationEnd){
         this.onRouter = event.url;
         this.updateRouterTime('1',event.url);
       }
     });
+
+    console.log(this.menuHideTip);
   }
 }
