@@ -25,10 +25,7 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero():void{
-    //观察者模式
-    //声明接口返回的对象（观察者对象），通过subscribe,传入一个观察者对象，这个对象处理接受的信息
     const id=+this.route.snapshot.paramMap.get('id');
-    // 该对象具有一个 unsubscribe() 方法。 当调用该方法时，你就会停止接收通知
     this.heroService.getHero(id).subscribe(
         hero=>this.hero =hero
     );

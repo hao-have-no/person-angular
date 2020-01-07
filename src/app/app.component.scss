@@ -12,34 +12,9 @@ h4{
   text-align: center;
   color: #fff;
 }
-
 .infi-content{
   display: flex;
-  background-color: #f0f2f5;
   .left-nav{
-    height: 100%;
-    background-color:#001529;
-    margin: 0;
-    flex: 1;
-    min-height: 100vh;
-    border: 1px solid #001529;
-    min-width: 160px;
-    &>a {
-      display: block;
-      flex-direction: column;
-      text-decoration: none;
-      text-align: center;
-      height: 40px;
-      line-height: 40px;
-      color: hsla(0,0%,100%,.65);
-      border-radius: 4px;
-    }
-    &>a:hover {
-      color: #039be5;
-    }
-    &>a.active {
-      color: #039be5;
-    }
     .roActive{
       color: #fff;
       background-color:#039be5;
@@ -48,34 +23,43 @@ h4{
       color: #fff;
     }
   }
-  .left-nav-hide{
-    display: none;
+  .left-nav a {
+    display: block;
+    flex-direction: column;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 10px;
+    color: hsla(0,0%,100%,.65);
+    border-radius: 4px;
   }
-
+  .left-nav a:hover {
+    color: #039be5;
+  }
+  .left-nav a.active {
+    color: #039be5;
+  }
   .left-nav,.right-content{
     display: flex;
     flex-direction: column;
+    margin-top: 40px;
   }
-
-
+  .left-nav{
+    background-color:#001529;
+    margin: -8px;
+    flex: 1;
+    min-height: 90vh;
+    border: 1px solid #001529;
+  }
   .right-content{
+    background-color: #f0f2f5;
     flex: 7;
-    margin-left: 20px;
-    .header-nav{
-      background-color: #fff;
-      height: 40px;
-      padding-left: 20px;
-    }
-    .content{
-      margin: 30px 20px 0 0;
-      background-color: #fff;
-      padding-left: 20px;
-    }
+    padding-left: 20px;
+    margin-left: -22px;
   }
 }
 
 section{
   margin-left: 10px;
-  background-color: #fff;
+  height: 40px;
 }
-

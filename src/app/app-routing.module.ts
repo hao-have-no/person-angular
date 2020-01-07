@@ -9,7 +9,6 @@ import {AdListComponent} from "./ad-component/ad.list.component";
 import { HeroReactiveControllerComponent } from "./name-editor/hero-reactive-controller.component";
 import {HeroFormControllerComponent} from "./angular-form/hero-form-controller.component";
 import {PageViewComponent} from "./page-view/page-view.component";
-import {PersonManagerComponent} from "./person-manager/person-manager.component";
 
 const routes: Routes = [
     // {path: '', redirectTo:'/reactive', pathMatch: 'full'},
@@ -20,8 +19,7 @@ const routes: Routes = [
     {path:'ad',component:AdListComponent},
     {path:'reactive',component:HeroReactiveControllerComponent},
     {path:'hero',component:HeroFormControllerComponent},
-    {path:'echart',component:PageViewComponent},
-    {path:'person-manager',component:PersonManagerComponent}
+    {path:'echart',component:PageViewComponent}
 ];
 
 @NgModule({

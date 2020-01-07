@@ -33,8 +33,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss",
-              "src/assets/style/basic.scss"
+              "src/styles.scss"
             ],
             "scripts":[
               "node_modules/echarts/dist/echarts.min.js",

@@ -6,7 +6,7 @@ import { Observable, Subject } from "rxjs";
  */
 import { Hero } from "../heroes/hero";
 import { HeroService } from "../hero.service";
-import {debounceTime, distinctUntilChanged, filter, switchMap} from "rxjs/operators";
+import {debounceTime, distinctUntilChanged, switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-hero-search',
@@ -32,13 +32,11 @@ export class HeroSearchComponent implements OnInit {
 
   ngOnInit() {
     this.heroes$ = this.searchTerms.pipe(
-        // map((e:KeyboardEvent)=>e.target.value);
-        filter(term=>term.length>2),//输入格式是否满足最小位数
         debounceTime(300),//节流
         distinctUntilChanged(),//比对条件是否改变
         switchMap((term: string)=>this.heroService.searchHeros(term))
         //开启搜索服务，将到达的搜索词填充
-        //searchTerms本身就是一个元数据，ｓｗitchMap映射Observable
+        //searchTerms本身就是我一个元数据，ｓｗitchMap映射Observable
         // switchMap()作用为在ｈｔｔｐ请求中，使用后续的去替代之前的， 会记住原始的请求顺序，只会返回最近一次 HTTP 方法调用的结果。 以前的那些请求都会被取消和舍弃。
     )
   }

@@ -50,7 +50,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {PageService} from "./page.service";
 import { PageViewComponent } from './page-view/page-view.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { PersonManagerComponent } from './person-manager/person-manager.component';
 
 @NgModule({
   declarations: [
@@ -77,8 +76,7 @@ import { PersonManagerComponent } from './person-manager/person-manager.componen
     HeroFormControllerComponent,
     HeroFormReactiveComponent,
     PageViewComponent,
-    NavigationComponent,
-    PersonManagerComponent
+    NavigationComponent
   ],
   entryComponents:[ HeroProfileComponent, HeroJobAdComponent],
   imports: [

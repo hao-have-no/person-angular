@@ -1,16 +1,16 @@
 <div class="infi-content">
 
-    <aside [ngClass]="{'left-nav-hide':!tip.openTip,'left-nav':tip.openTip}">
+    <aside class="left-nav">
         <h4>路由</h4>
         <a *ngFor="let item of NavRouter" routerLink="{{item.url}}" [ngClass]="{'roActive': onRouter == item.url }"> {{item.name}} </a>
     </aside>
+    <section>
+        <header>
+            123
+        </header>
+    </section>
     <div class="right-content">
-        <div class="header-nav ">
-            <app-navigation #tip></app-navigation>
-        </div>
-        <div class="content">
-                <router-outlet></router-outlet>
-            <app-messages></app-messages>
-        </div>
+        <router-outlet></router-outlet>
+    <app-messages></app-messages>
     </div>
 </div>

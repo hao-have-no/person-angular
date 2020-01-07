@@ -4,8 +4,6 @@ import { HeroService } from "./hero.service";
 import { PageService } from "./page.service";
 import {slideInAnimation} from "./animations";
 import {pageInfo} from "./pageInfo";
-import { NavigationComponent } from "./navigation/navigation.component";
-
 
 
 @Component({
@@ -17,8 +15,6 @@ export class AppComponent implements OnInit{
   private onRouter: string="";
   private timeStamp: number;
   private time: number=0;
-  public menuHideTip=false;
-
   private NavRouter:any=[
     {
     id:'1',
@@ -52,11 +48,6 @@ export class AppComponent implements OnInit{
       id:'7',
       name:'echarts实现',
       url:'/echart',
-    },
-    {
-      id:'8',
-      name:"个人中心",
-      url:'/person-manager'
     }
   ];
 
@@ -128,12 +119,13 @@ export class AppComponent implements OnInit{
         this.updateRouterTime('0',event.url);
       }
 
+
+
+
       if (event instanceof NavigationEnd){
         this.onRouter = event.url;
         this.updateRouterTime('1',event.url);
       }
     });
-
-    console.log(this.menuHideTip);
   }
 }
