@@ -5,7 +5,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
 import { InMemoryDataService } from "./in-memory-data.service";
 import { NgxEchartsModule } from "ngx-echarts";
-import { NgZorroAntdModule,NZ_I18N, zh_CN } from "ng-zorro-antd";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,7 +17,6 @@ import { HeroMeasurementComponent } from './hero-measurement/hero-measurement.co
 import { HeroMeasurementChildrenComponent } from './hero-measurement-children/hero-measurement-children.component';
 import { HighlightDirective } from './highlight.directive';
 
-
 import {AdBannerComponent} from "./ad-component/ad-banner.component";
 import {HeroProfileComponent} from "./ad-component/hero-profille.component";
 import {HeroJobAdComponent} from "./ad-component/hero-job-ad.component";
@@ -26,11 +24,6 @@ import {AdListComponent} from "./ad-component/ad.list.component";
 import {AdDirective} from "./ad-component/ad.directive";
 import { AppUnlessDirective } from './ad-component/app-unless.directive';
 import { ExponentialPipe } from './ad-component/exponential.pipe';
-
-/** 配置 angular i18n **/
-import { registerLocaleData } from '@angular/common';
-import zh from '@angular/common/locales/zh';
-registerLocaleData(zh);
 
 /**
  * 响应式表单
@@ -91,16 +84,9 @@ import { NavigationComponent } from './navigation/navigation.component';
     // HttpClientInMemoryWebApiModule.forRoot(
     // InMemoryDataService, { dataEncapsulation: false }
     // )
-    NgxEchartsModule,
-    NgZorroAntdModule
+    NgxEchartsModule
   ],
-  exports:[
-      NgZorroAntdModule
-  ],
-  bootstrap: [AppComponent],//根组件，提供视图服务
-  providers   : [
-    { provide:PageService },
-    { provide:NZ_I18N, useValue: zh_CN }
-  ]
+  providers: [PageService],//服务提供商
+  bootstrap: [AppComponent]//根组件，提供视图服务
 })
 export class AppModule { }

@@ -17,21 +17,7 @@
     "lib": [
       "es2018",
       "dom"
-    ],
-    "paths": {
-      "http-client": [
-        "dist/http-client"
-      ],
-      "http-client/*": [
-        "dist/http-client/*"
-      ],
-      "auth-login": [
-        "dist/auth-login"
-      ],
-      "auth-login/*": [
-        "dist/auth-login/*"
-      ]
-    }
+    ]
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
